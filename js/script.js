@@ -16,17 +16,20 @@ cards.forEach((card) => {
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     modalOverlay.classList.toggle('open');
-    getCityId(cityInput.value)
-    const currentCity = document.getElementById('currentCity');
-    currentCity.innerText = cityInput.value;
-    console.log(cityID)
-    //getCusineByCity(String(cityID));
+    getCityId(cityInput.value).then(cityID => {
+        console.log(cityID);
+        getCusineByCity(cityID);
+    })
+    // console.log(cityID)
+
+
 
 });
 
 function getCityId(city) {
+    const currentCity = document.getElementById('currentCity');
     let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
-    fetch(url, {
+    let fetchVar = fetch(url, {
         headers: {
             'user-key': apiKey,
         },
@@ -39,10 +42,15 @@ function getCityId(city) {
         })
         .then((res) => {
             console.log(res.location_suggestions[0].name);
-            cityID = res.location_suggestions[0].id;
+            currentCity.innerText = res.location_suggestions[0].name;
             //console.log(cityID);
+            //getCusineByCity(res.location_suggestions[0].id)
+            return res.location_suggestions[0].id;
         });
+    return fetchVar;
 };
+
+
 
 
 function getCusineByCity(cityID) {
@@ -60,11 +68,12 @@ function getCusineByCity(cityID) {
         })
         .then((res) => {
             res.cuisines.forEach((item) => {
-                // const listItem = document.createElement('p');
-                // body.appendChild(listItem);
-                // listItem.innerText = item.name;
-                // returnitem.cuisine.cuisine_name);
-                console.log("Cuisine, ", item.cuisine.cuisine_name)
+                if (item.cuisine.cuisine_name === 'BBQ' || item.cuisine.cuisine_name === 'Burger' || item.cuisine.cuisine_name === 'Pizza' || item.cuisine.cuisine_name === 'Seafood' || item.cuisine.cuisine_name === 'Italian' || item.cuisine.cuisine_name === 'American')
+                // .fil= 'BBQ')ter(cusine => cuisine_name != 
+                {
+                    console.log("Cuisine, ", item.cuisine.cuisine_name);
+
+                }
             });
         });
 }
