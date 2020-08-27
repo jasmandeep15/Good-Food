@@ -21,9 +21,6 @@ submitButton.addEventListener('click', function (e) {
         getCusineByCity(cityID);
     })
     // console.log(cityID)
-
-
-
 });
 
 function getCityId(city) {
@@ -102,4 +99,30 @@ function getEstablishmentsByCity(cityID) {
         });
 }
 
-//getCusineByCity('288');
+
+
+
+function getRandomPicture(category) {
+    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=20`;
+    let fetchVar = fetch(url, {
+        headers: {
+            'Authorization': pexelApiKey,
+        },
+    })
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .then((res) => {
+            const example = document.getElementById('example');
+            let randomIndex = Math.floor(Math.random() * 20);
+            let randomPhoto = res.photos[randomIndex].src.medium
+            console.log(randomPhoto);
+            example.setAttribute('src', randomPhoto)
+        });
+    return fetchVar;
+};
+
+getRandomPicture('Hamburger');
