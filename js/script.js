@@ -39,7 +39,7 @@ card3.addEventListener('click', function () {
 card4.addEventListener('click', function () {
     const userClick = document.getElementById('card4');
     restaurantOverlay.classList.toggle('open');
-    const cuisine = 193; // cuisine ID for bbq);
+    const cuisine = 193; // cuisine ID for bbq
     getEstablishmentsByCity(cityID, cuisine);
 });
 
@@ -168,13 +168,13 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 p.innerText = restaurantAddress;
                 timings.innerText = restaurantHours;
                 a.innerText = 'Website';
-                a.setAttribute('src', restaurantWebsite);
+                a.setAttribute('href', restaurantWebsite);
                 restaurantContainer.appendChild(h1);
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
                 restaurantContainer.appendChild(a);
-                
-                
+
+
             });
         });
 }
