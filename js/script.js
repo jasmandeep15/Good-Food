@@ -10,61 +10,49 @@ const cards = document.querySelectorAll('.card'),
     card5 = document.getElementById('card5'),
     card6 = document.getElementById('card6'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
-    let cityID;
-    let cuisine;
+let cityID;
+let cuisine;
 
 card1.addEventListener('click', function () {
     const userClick = document.getElementById('card1');
-    const cuisine = 175; // cuisine ID for american
-    console.log('click1');
-    getEstablishmentsByCity(cityID);
-
+    const cuisine = 168; // cuisine ID for burgers
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card2.addEventListener('click', function () {
     const userClick = document.getElementById('card2');
-    const cuisine = 168; // cuisine ID for burgers
-    console.log('click2');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 82; // cuisine ID for pizza
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card3.addEventListener('click', function () {
     const userClick = document.getElementById('card3');
-    const cuisine = 82; // cuisine ID for pizza
-    console.log('click3');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 83; // cuisine ID for seafood
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card4.addEventListener('click', function () {
     const userClick = document.getElementById('card4');
-    const cuisine = 83; // cuisine ID for seafood
-    console.log('click4');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 193; // cuisine ID for bbq
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card5.addEventListener('click', function () {
     const userClick = document.getElementById('card5');
-    const cuisine = 193; // cuisine ID for bbq
-    console.log('click5');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 55; // cuisine ID for italian
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card6.addEventListener('click', function () {
     const userClick = document.getElementById('card6');
-    const cuisine = 55; // cuisine ID for italian
-    console.log('click6');
-    getEstablishmentsByCity(cityID);
+    getRandomCuisineByCity(cityID);
 });
-
-
 
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     modalOverlay.classList.toggle('open');
-    getCityId(cityInput.value).then(cityID => {
-        console.log(cityID);
-        //getCuisineByCity(cityID);
-        //getEstablishmentsByCity(cityID);
+    getCityId(cityInput.value).then(aCityID => {
+        cityID = aCityID;
     });
 });
 
@@ -92,11 +80,13 @@ function getCityId(city) {
     return fetchVar;
 };
 
+function randomNumber(min, max) {  
+    return Math.floor(Math.random() * (max - min) + min);
+}  
 
-
-
-function getCuisineByCity(cityID) {
+function getRandomCuisineByCity(cityID) {
     let url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityID}`;
+    
     fetch(url, {
         headers: {
             'user-key': apiKey,
@@ -109,18 +99,15 @@ function getCuisineByCity(cityID) {
             return data;
         })
         .then((res) => {
-            res.cuisines.forEach((item) => {
-                //create loop to randomly select cuisine
-                console.log(item.cuisine.cuisine_name, item.cuisine.cuisine_id);
-            });
+            const randomIndex = randomNumber(0, res.cuisines.length);
+            cuisine = res.cuisines[randomIndex].cuisine.cuisine_id;
+            console.log(cuisine);
+            getEstablishmentsByCity(cityID, cuisine);
         });
 }
 
-function getEstablishmentsByCity(cityID) {
-
-    // const cuisine = 82; // cuisine ID for pizza 
-    // change output to 2 restaurants
-    let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=2&cuisines=${cuisine}&sort=rating`;
+function getEstablishmentsByCity(cityID, cuisine) {
+    let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetch(url, {
         headers: {
             'user-key': apiKey,
@@ -146,6 +133,7 @@ function getEstablishmentsByCity(cityID) {
 }
 
 
+
 // Pexel API - Random pictures displayed on selection cards
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
 const americanFood = document.getElementById('americanFoodPicture');
@@ -157,31 +145,30 @@ const italianPicture = document.getElementById('italianPicture');
 
 
 
-// function getRandomPicture(category, element) {
-//     let url = `https://api.pexels.com/v1/search?query=${category}&per_page=6&orientation=landscape`;
-//     let fetchVar = fetch(url, {
-//         headers: {
-//             'Authorization': pexelApiKey,
-//         },
-//     })
-//         .then((res) => {
-//             return res.json();
-//         })
-//         .then((data) => {
-//             return data;
-//         })
-//         .then((res) => {
-//             console.log(res)
-//             let sizedPhotos = res.photos.filter(item => {
-//                 return item.width > item.height
-//             });
-//             let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
-//             console.log(sizedPhotos[randomIndex])
-//             let randomPhoto = sizedPhotos[randomIndex].src.medium;
-//             element.setAttribute('src', randomPhoto)
-//         });
-//     return fetchVar;
-// };
+function getRandomPicture(category, element) {
+    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=1`;
+    let fetchVar = fetch(url, {
+        headers: {
+            'Authorization': pexelApiKey,
+        },
+    })
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .then((res) => {
+            console.log(res)
+            let sizedPhotos = res.photos.filter(item => {
+                return item.width > item.height
+            });
+            let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
+            let randomPhoto = sizedPhotos[randomIndex].src.medium;
+            element.setAttribute('src', randomPhoto)
+        });
+    return fetchVar;
+};
 
 // getRandomPicture('American food', americanFood);
 // getRandomPicture('Burger', burgers);
@@ -189,4 +176,3 @@ const italianPicture = document.getElementById('italianPicture');
 // getRandomPicture('Seafood', seafoodPicture);
 // getRandomPicture('BBQ pork', bbqPicture);
 // getRandomPicture('Pasta', italianPicture);
-
