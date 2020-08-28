@@ -5,12 +5,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front-End-Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <div class="jumbotron">
+        <h1 class="display-4">Good Eats!</h1>
+        <p class="lead">Welcome to Good Eats! where you are able to pick the food you want based off of your location
+            and pictures from resturants in your local area. Start by typing in your city and enjoy your Good Eats!</p>
+    </div>
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <form>
+                Where are you hungry?
+                <input type="text" id="cityInput" placeholder="Enter City" />
+                <button id="submitButton">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <h2 class="header">Choose a cuisine to see restaurants in <span id="currentCity"> </span> </h2>
+
+    <div class="card-container">
+        <div class="card" id="card1">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1202&q=80"
+                        alt="Placeholder image" id="burgerPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a> Burgersss</a>
+            </div>
+        </div>
+
+        <div class="card" id="card2">
+
+            <div class="card-image">
+                <figure class=" image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1589477500339-82aeb8718167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        alt="Placeholder image" id="pizzaPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a>Pizzzzzzzaaa</a>
+            </div>
+        </div>
+
+        <div class="card" id="card3">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1569494315581-abddb8d41cfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        alt="Placeholder image" id="seafoodPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a>SeaFood!</a>
+            </div>
+        </div>
+
+        <div class="card" id="card4">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1508615263227-c5d58c1e5821?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        alt="Placeholder image" id="bbqPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a>BBQ! So good make you wanna slap yo momma!</a>
+            </div>
+        </div>
+
+        <div class="card" id="card5">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1506280754576-f6fa8a873550?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        id="italianPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+            </div><a>Italian</a>
+        </div>
+
+        <div class="card" id="card6">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1484069560501-87d72b0c3669?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+                        alt="Placeholder image" id="americanFoodPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a>RANDOM WOWOWOW</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="restaurant-overlay">
+
+        <div class="container bg-img" id="restaurantContainer">
+            <h1 class="text">The input placeholder attribute</h1>
+            <p class="p-text">This is a paragraph.</p>
+            <div class=""></div>
+            <div class="input-text">
+                <input type="" id="" name="" placeholder="">
+                <input type="submit"></div>
+        </div>
+    </div>
+
+
+
 
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
 
 </html>

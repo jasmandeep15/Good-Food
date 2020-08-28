@@ -1,0 +1,120 @@
+body {
+    background-image: url('/goodeatslogoagain.jpg');
+    background-attachment: fixed;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.card {
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+.jumbotron {
+    text-align: center;
+    
+}
+
+.header {
+    background-color: white;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+    text-align: center;
+}
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 9999;
+}
+
+.modal-overlay.open {
+    display: none;
+}
+
+.modal-content {
+    background-color: #efefefdb;
+    border-radius: 6px;
+    margin: auto;
+    max-width: 300px;
+    padding: 15px;
+    position: relative;
+    z-index: 10000;
+    text-align: center;
+}
+
+/* Annemarie */
+.text {
+    
+    color: rgb(83, 9, 79);
+    margin: 10px;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+}
+
+.p-text {
+    color: rgb(83, 9, 79);
+    margin: 10px;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+
+}
+
+.input-text {
+    color: rgb(83, 9, 79);
+    position: relative;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+.bg-img {
+    background-color: white;
+    background: url("");
+    background-position: center;
+    background-size: cover;
+    width: 500px;
+    height: 800px;
+}
+
+.restaurant-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 9999;
+}
+
+.restaurant-overlay.open {
+    display: flex;
+}
