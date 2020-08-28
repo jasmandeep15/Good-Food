@@ -8,27 +8,28 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="jumbotron">
         <h1 class="display-4">Good Eats!</h1>
-        <p class="lead">Welcome to Good Eats! where you are able to pick the food you want based off of your location
-            and
-            pictures from resturants in your local area. Start by typing in your city and enjoy your Good Eats!</p>
+        <p class="lead">Welcome to Good Eats! where you are able to pick the food you want based off of your location and pictures from resturants in your local area. Start by typing in your city and enjoy your Good Eats!</p>
     </div>
     <div class="modal-overlay">
         <div class="modal-content">
             <form>
+                Where are you hungry?
                 <input type="text" id="cityInput" placeholder="Enter City" />
                 <button id="submitButton">Submit</button>
             </form>
         </div>
     </div>
-    <h1 class="header">Choose a cuisine in your area... <span id="currentCity"> </span> </h1>
+
+    <h2 class="header">Choose a cuisine to see restaurants in <span id="currentCity"> </span> </h2>
+
     <div class="card-container">
+<!-- card 1 -->
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -37,12 +38,10 @@
                 </figure>
             </div>
             <div class="card-content">
-
-
                 <a>America Food</a>
-
             </div>
         </div>
+<!-- card 2 -->
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -51,12 +50,10 @@
                 </figure>
             </div>
             <div class="card-content">
-
-
                 <a> Burgersss</a>
-
             </div>
         </div>
+<!-- card 3 -->
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -65,12 +62,10 @@
                 </figure>
             </div>
             <div class="card-content">
-
-
                 <a>Pizzzzzzzaaa</a>
-
             </div>
         </div>
+<!-- card 4 -->
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -79,12 +74,10 @@
                 </figure>
             </div>
             <div class="card-content">
-
-
                 <a>SeaFood!</a>
-
             </div>
         </div>
+<!-- card 5 -->
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -93,12 +86,10 @@
                 </figure>
             </div>
             <div class="card-content">
-
-
                 <a>BBQ! So good make you wanna slap yo momma!</a>
-
             </div>
         </div>
+<!-- card 6 -->
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -107,12 +98,12 @@
                 </figure>
             </div>
             <div class="card-content">
-
-            </div><a>Italian</a>.
-
-
+                </div><a>Italian</a>
+            </div>
         </div>
     </div>
+
+    <div id="restaurantList">
     </div>
 
 

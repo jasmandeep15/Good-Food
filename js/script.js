@@ -7,9 +7,10 @@ const apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
 let cityID;
 
+
 cards.forEach((card) => {
     card.addEventListener('click', () => {
-        console.log('click');
+       // console.log('click');
     });
 });
 
@@ -18,12 +19,9 @@ submitButton.addEventListener('click', function (e) {
     modalOverlay.classList.toggle('open');
     getCityId(cityInput.value).then(cityID => {
         console.log(cityID);
-        getCusineByCity(cityID);
-    })
-    // console.log(cityID)
-
-
-
+        //getCuisineByCity(cityID);
+        getEstablishmentsByCity(cityID);
+    });
 });
 
 function getCityId(city) {
@@ -53,7 +51,7 @@ function getCityId(city) {
 
 
 
-function getCusineByCity(cityID) {
+function getCuisineByCity(cityID) {
     let url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityID}`;
     fetch(url, {
         headers: {
@@ -68,18 +66,16 @@ function getCusineByCity(cityID) {
         })
         .then((res) => {
             res.cuisines.forEach((item) => {
-                if (item.cuisine.cuisine_name === 'BBQ' || item.cuisine.cuisine_name === 'Burger' || item.cuisine.cuisine_name === 'Pizza' || item.cuisine.cuisine_name === 'Seafood' || item.cuisine.cuisine_name === 'Italian' || item.cuisine.cuisine_name === 'American')
-                // .fil= 'BBQ')ter(cusine => cuisine_name != 
-                {
-                    console.log("Cuisine, ", item.cuisine.cuisine_name);
-
-                }
+                //create loop to randomly select cuisine
+                console.log(item.cuisine.cuisine_name, item.cuisine.cuisine_id);
             });
         });
 }
 
 function getEstablishmentsByCity(cityID) {
-    let url = `https://developers.zomato.com/api/v2.1/establishments?city_id=${cityID}`;
+    const cuisine = 82; // cuisine ID for pizza 
+    const restaurantList = document.getElementById('restaurantList'); 
+    let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetch(url, {
         headers: {
             'user-key': apiKey,
@@ -92,14 +88,15 @@ function getEstablishmentsByCity(cityID) {
             return data;
         })
         .then((res) => {
-            console.log(res);
-            res.establishments.forEach((item) => {
-                // const listItem = document.createElement('p');
-                // body.appendChild(listItem);
-                // listItem.innerText = item.name;
-                console.log(item.establishment.name);
+            res.restaurants.forEach((item) => {
+                    let restaurantName = item.restaurant.name;
+                    let restaurantAddress = item.restaurant.location.address;
+                    let restaurantHours = item.restaurant.timings;
+                    let restaurantWebsite = item.restaurant.url;
+                    console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
             });
         });
 }
+
 
 //getCusineByCity('288');
