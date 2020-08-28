@@ -13,61 +13,47 @@ const cards = document.querySelectorAll('.card'),
 let cityID;
 let cuisine;
 
-
 card1.addEventListener('click', function () {
     const userClick = document.getElementById('card1');
-    const cuisine = 175; // cuisine ID for american
-    console.log('click1');
-    getEstablishmentsByCity(cityID);
-
+    const cuisine = 168; // cuisine ID for burgers
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card2.addEventListener('click', function () {
     const userClick = document.getElementById('card2');
-    const cuisine = 168; // cuisine ID for burgers
-    console.log('click2');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 82; // cuisine ID for pizza
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card3.addEventListener('click', function () {
     const userClick = document.getElementById('card3');
-    const cuisine = 82; // cuisine ID for pizza
-    console.log('click3');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 83; // cuisine ID for seafood
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card4.addEventListener('click', function () {
     const userClick = document.getElementById('card4');
-    const cuisine = 83; // cuisine ID for seafood
-    console.log('click4');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 193; // cuisine ID for bbq
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card5.addEventListener('click', function () {
     const userClick = document.getElementById('card5');
-    const cuisine = 193; // cuisine ID for bbq
-    console.log('click5');
-    getEstablishmentsByCity(cityID);
+    const cuisine = 55; // cuisine ID for italian
+    getEstablishmentsByCity(cityID, cuisine);
 });
 
 card6.addEventListener('click', function () {
     const userClick = document.getElementById('card6');
-    const cuisine = 55; // cuisine ID for italian
-    console.log('click6');
-    getEstablishmentsByCity(cityID);
-
-
+    getRandomCuisineByCity(cityID);
 });
 
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     modalOverlay.classList.toggle('open');
-    getCityId(cityInput.value).then(cityID => {
-        console.log(cityID);
-        //getCuisineByCity(cityID);
+    getCityId(cityInput.value).then(aCityID => {
+        cityID = aCityID;
     });
-
-
 });
 
 function getCityId(city) {
@@ -94,11 +80,13 @@ function getCityId(city) {
     return fetchVar;
 };
 
+function randomNumber(min, max) {  
+    return Math.floor(Math.random() * (max - min) + min);
+}  
 
-
-
-function getCuisineByCity(cityID) {
+function getRandomCuisineByCity(cityID) {
     let url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityID}`;
+    
     fetch(url, {
         headers: {
             'user-key': apiKey,
@@ -111,16 +99,14 @@ function getCuisineByCity(cityID) {
             return data;
         })
         .then((res) => {
-            res.cuisines.forEach((item) => {
-                //create loop to randomly select cuisine
-                console.log(item.cuisine.cuisine_name, item.cuisine.cuisine_id);
-            });
+            const randomIndex = randomNumber(0, res.cuisines.length);
+            cuisine = res.cuisines[randomIndex].cuisine.cuisine_id;
+            console.log(cuisine);
+            getEstablishmentsByCity(cityID, cuisine);
         });
 }
 
-function getEstablishmentsByCity(cityID) {
-
-    // const cuisine = 82; // cuisine ID for pizza 
+function getEstablishmentsByCity(cityID, cuisine) {
     let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetch(url, {
         headers: {
