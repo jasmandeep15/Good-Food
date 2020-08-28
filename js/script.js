@@ -10,6 +10,8 @@ const cards = document.querySelectorAll('.card'),
     card5 = document.getElementById('card5'),
     card6 = document.getElementById('card6'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
+let cityID;
+let cuisine;
 
 
 card1.addEventListener('click', function () {
@@ -55,17 +57,15 @@ card6.addEventListener('click', function () {
     getEstablishmentsByCity(cityID);
 
 
-
+});
 
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     modalOverlay.classList.toggle('open');
     getCityId(cityInput.value).then(cityID => {
         console.log(cityID);
-
-
         //getCuisineByCity(cityID);
-        getEstablishmentsByCity(cityID);
+        //getEstablishmentsByCity(cityID);
     });
 
 
@@ -122,8 +122,6 @@ function getCuisineByCity(cityID) {
 function getEstablishmentsByCity(cityID) {
 
     // const cuisine = 82; // cuisine ID for pizza 
-    const restaurantList = document.getElementById('restaurantList');
-
     let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetch(url, {
         headers: {
@@ -150,6 +148,7 @@ function getEstablishmentsByCity(cityID) {
 }
 
 
+
 // Pexel API - Random pictures displayed on selection cards
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
 const americanFood = document.getElementById('americanFoodPicture');
@@ -161,36 +160,34 @@ const italianPicture = document.getElementById('italianPicture');
 
 
 
-// function getRandomPicture(category, element) {
-//     let url = `https://api.pexels.com/v1/search?query=${category}&per_page=6&orientation=landscape`;
-//     let fetchVar = fetch(url, {
-//         headers: {
-//             'Authorization': pexelApiKey,
-//         },
-//     })
-//         .then((res) => {
-//             return res.json();
-//         })
-//         .then((data) => {
-//             return data;
-//         })
-//         .then((res) => {
-//             console.log(res)
-//             let sizedPhotos = res.photos.filter(item => {
-//                 return item.width > item.height
-//             });
-//             let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
-//             console.log(sizedPhotos[randomIndex])
-//             let randomPhoto = sizedPhotos[randomIndex].src.medium;
-//             element.setAttribute('src', randomPhoto)
-//         });
-//     return fetchVar;
-// };
+function getRandomPicture(category, element) {
+    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=1`;
+    let fetchVar = fetch(url, {
+        headers: {
+            'Authorization': pexelApiKey,
+        },
+    })
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .then((res) => {
+            console.log(res)
+            let sizedPhotos = res.photos.filter(item => {
+                return item.width > item.height
+            });
+            let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
+            let randomPhoto = sizedPhotos[randomIndex].src.medium;
+            element.setAttribute('src', randomPhoto)
+        });
+    return fetchVar;
+};
 
-// getRandomPicture('American food', americanFood);
-// getRandomPicture('Burger', burgers);
-// getRandomPicture('Pizza', pizzaPicture);
-// getRandomPicture('Seafood', seafoodPicture);
-// getRandomPicture('BBQ pork', bbqPicture);
-// getRandomPicture('Pasta', italianPicture);
-
+getRandomPicture('American food', americanFood);
+getRandomPicture('Burger', burgers);
+getRandomPicture('Pizza', pizzaPicture);
+getRandomPicture('Seafood', seafoodPicture);
+getRandomPicture('BBQ pork', bbqPicture);
+getRandomPicture('Pasta', italianPicture);
