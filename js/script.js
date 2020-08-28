@@ -53,15 +53,22 @@ card6.addEventListener('click', function () {
     const cuisine = 55; // cuisine ID for italian
     console.log('click6');
     getEstablishmentsByCity(cityID);
-});
+
+
+
 
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     modalOverlay.classList.toggle('open');
     getCityId(cityInput.value).then(cityID => {
         console.log(cityID);
-        getCusineByCity(cityID);
+
+
+        //getCuisineByCity(cityID);
+        getEstablishmentsByCity(cityID);
     });
+
+
 });
 
 function getCityId(city) {
@@ -91,7 +98,7 @@ function getCityId(city) {
 
 
 
-function getCusineByCity(cityID) {
+function getCuisineByCity(cityID) {
     let url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityID}`;
     fetch(url, {
         headers: {
@@ -106,19 +113,17 @@ function getCusineByCity(cityID) {
         })
         .then((res) => {
             res.cuisines.forEach((item) => {
-                if (item.cuisine.cuisine_name === 'BBQ' || item.cuisine.cuisine_name === 'Burger' || item.cuisine.cuisine_name === 'Pizza' || item.cuisine.cuisine_name === 'Seafood' || item.cuisine.cuisine_name === 'Italian' || item.cuisine.cuisine_name === 'American')
-                // .fil= 'BBQ')ter(cusine => cuisine_name != 
-                {
-                    console.log("Cuisine, ", item.cuisine.cuisine_name);
-
-                }
+                //create loop to randomly select cuisine
+                console.log(item.cuisine.cuisine_name, item.cuisine.cuisine_id);
             });
         });
 }
 
 function getEstablishmentsByCity(cityID) {
+
     // const cuisine = 82; // cuisine ID for pizza 
     const restaurantList = document.getElementById('restaurantList');
+
     let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetch(url, {
         headers: {
@@ -133,19 +138,16 @@ function getEstablishmentsByCity(cityID) {
         })
         .then((res) => {
             res.restaurants.forEach((item) => {
+
                 let restaurantName = item.restaurant.name;
                 let restaurantAddress = item.restaurant.location.address;
                 let restaurantHours = item.restaurant.timings;
                 let restaurantWebsite = item.restaurant.url;
                 console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
+
             });
         });
 }
-
-
-
-
-
 
 
 // Pexel API - Random pictures displayed on selection cards
@@ -156,6 +158,7 @@ const pizzaPicture = document.getElementById('pizzaPicture');
 const seafoodPicture = document.getElementById('seafoodPicture');
 const bbqPicture = document.getElementById('bbqPicture');
 const italianPicture = document.getElementById('italianPicture');
+
 
 
 // function getRandomPicture(category, element) {
@@ -190,3 +193,4 @@ const italianPicture = document.getElementById('italianPicture');
 // getRandomPicture('Seafood', seafoodPicture);
 // getRandomPicture('BBQ pork', bbqPicture);
 // getRandomPicture('Pasta', italianPicture);
+
