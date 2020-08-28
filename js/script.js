@@ -10,7 +10,8 @@ const cards = document.querySelectorAll('.card'),
     card5 = document.getElementById('card5'),
     card6 = document.getElementById('card6'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
-
+    let cityID;
+    let cuisine;
 
 card1.addEventListener('click', function () {
     const userClick = document.getElementById('card1');
@@ -53,7 +54,7 @@ card6.addEventListener('click', function () {
     const cuisine = 55; // cuisine ID for italian
     console.log('click6');
     getEstablishmentsByCity(cityID);
-
+});
 
 
 
@@ -62,13 +63,9 @@ submitButton.addEventListener('click', function (e) {
     modalOverlay.classList.toggle('open');
     getCityId(cityInput.value).then(cityID => {
         console.log(cityID);
-
-
         //getCuisineByCity(cityID);
-        getEstablishmentsByCity(cityID);
+        //getEstablishmentsByCity(cityID);
     });
-
-
 });
 
 function getCityId(city) {
@@ -122,9 +119,8 @@ function getCuisineByCity(cityID) {
 function getEstablishmentsByCity(cityID) {
 
     // const cuisine = 82; // cuisine ID for pizza 
-    const restaurantList = document.getElementById('restaurantList');
-
-    let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
+    // change output to 2 restaurants
+    let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=2&cuisines=${cuisine}&sort=rating`;
     fetch(url, {
         headers: {
             'user-key': apiKey,
