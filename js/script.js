@@ -53,6 +53,7 @@ card6.addEventListener('click', function () {
     const cuisine = 55; // cuisine ID for italian
     console.log('click6');
     getEstablishmentsByCity(cityID);
+});
 
 
 
