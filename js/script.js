@@ -47,6 +47,7 @@ card5.addEventListener('click', function () {
 
 card6.addEventListener('click', function () {
     const userClick = document.getElementById('card6');
+
     getRandomCuisineByCity(cityID);
 });
 
