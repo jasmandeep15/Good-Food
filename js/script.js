@@ -69,6 +69,10 @@ submitButton.addEventListener('click', function (e) {
 });
 
 
+closeModal.addEventListener('click', function () {
+    restaurantOverlay.classList.toggle('open');
+});
+
 function getCityId(city) {
     const currentCity = document.getElementById('currentCity');
     let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
@@ -92,6 +96,7 @@ function getCityId(city) {
         });
     return fetchVar;
 };
+
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
