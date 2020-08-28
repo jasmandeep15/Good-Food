@@ -9,12 +9,14 @@ const cards = document.querySelectorAll('.card'),
     card4 = document.getElementById('card4'),
     card5 = document.getElementById('card5'),
     card6 = document.getElementById('card6'),
+    restaurantOverlay = document.querySelector('.restaurant-overlay'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
 let cityID;
 let cuisine;
 
 card1.addEventListener('click', function () {
     const userClick = document.getElementById('card1');
+    restaurantOverlay.classList.toggle('open');
     const cuisine = 168; // cuisine ID for burgers
     getEstablishmentsByCity(cityID, cuisine);
 });
@@ -120,6 +122,8 @@ function getEstablishmentsByCity(cityID, cuisine) {
             return data;
         })
         .then((res) => {
+            const restaurantContainer = document.getElementById('restaurantContainer');
+            restaurantContainer.innerHTML = '';
             res.restaurants.forEach((item) => {
 
                 let restaurantName = item.restaurant.name;
@@ -127,6 +131,36 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 let restaurantHours = item.restaurant.timings;
                 let restaurantWebsite = item.restaurant.url;
                 console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
+
+
+
+
+                restaurantContainer.classList.add('has-background-info-dark');
+                restaurantContainer.classList.add('has-text-primary-light');
+                const h1 = document.createElement('h1');
+                h1.classList.add('title');
+                h1.classList.add('pt-4');
+                h1.classList.add('has-text-info-light');
+
+                const p = document.createElement('p');
+                p.classList.add('subtitle');
+                p.classList.add('has-text-info-light');
+
+                const a = document.createElement('a');
+                a.classList.add('pb');
+                a.classList.add('has-text-black');
+
+                const timings = document.createElement('p');
+
+                h1.innerText = restaurantName;
+                p.innerText = restaurantAddress;
+                timings.innerText = restaurantHours;
+                a.innerText = 'Website';
+                a.setAttribute('src', restaurantWebsite);
+                restaurantContainer.appendChild(h1);
+                restaurantContainer.appendChild(p);
+                restaurantContainer.appendChild(timings);
+                restaurantContainer.appendChild(a);
 
             });
         });

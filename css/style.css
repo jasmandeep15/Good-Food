@@ -92,10 +92,29 @@ body {
 }
 
 .bg-img {
-
+    background-color: white;
     background: url("");
     background-position: center;
     background-size: cover;
     width: 500px;
     height: 800px;
+}
+
+.restaurant-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 9999;
+}
+
+.restaurant-overlay.open {
+    display: flex;
 }
