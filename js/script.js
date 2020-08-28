@@ -66,7 +66,7 @@ submitButton.addEventListener('click', function (e) {
 
 closeModal.addEventListener('click', function () {
     restaurantOverlay.classList.toggle('open');
-})
+});
 
 function getCityId(city) {
     const currentCity = document.getElementById('currentCity');
@@ -91,6 +91,7 @@ function getCityId(city) {
         });
     return fetchVar;
 };
+
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
