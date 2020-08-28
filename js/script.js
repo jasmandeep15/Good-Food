@@ -65,7 +65,6 @@ submitButton.addEventListener('click', function (e) {
     getCityId(cityInput.value).then(cityID => {
         console.log(cityID);
         //getCuisineByCity(cityID);
-        //getEstablishmentsByCity(cityID);
     });
 
 
@@ -185,9 +184,9 @@ function getRandomPicture(category, element) {
     return fetchVar;
 };
 
-getRandomPicture('American food', americanFood);
-getRandomPicture('Burger', burgers);
-getRandomPicture('Pizza', pizzaPicture);
-getRandomPicture('Seafood', seafoodPicture);
-getRandomPicture('BBQ pork', bbqPicture);
-getRandomPicture('Pasta', italianPicture);
+// getRandomPicture('American food', americanFood);
+// getRandomPicture('Burger', burgers);
+// getRandomPicture('Pizza', pizzaPicture);
+// getRandomPicture('Seafood', seafoodPicture);
+// getRandomPicture('BBQ pork', bbqPicture);
+// getRandomPicture('Pasta', italianPicture);
