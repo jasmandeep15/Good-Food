@@ -4,6 +4,7 @@ body {
 }
 
 .card-container {
+    border-radius: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
