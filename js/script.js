@@ -25,28 +25,24 @@ card1.addEventListener('click', function () {
 card2.addEventListener('click', function () {
     const userClick = document.getElementById('card2');
     const cuisine = 82; // cuisine ID for pizza
-    restaurantOverlay.classList.toggle('open');
     getEstablishmentsByCity(cityID, cuisine);
 });
 
 card3.addEventListener('click', function () {
     const userClick = document.getElementById('card3');
     const cuisine = 83; // cuisine ID for seafood
-    restaurantOverlay.classList.toggle('open');
     getEstablishmentsByCity(cityID, cuisine);
 });
 
 card4.addEventListener('click', function () {
     const userClick = document.getElementById('card4');
     const cuisine = 193; // cuisine ID for bbq
-    restaurantOverlay.classList.toggle('open');
     getEstablishmentsByCity(cityID, cuisine);
 });
 
 card5.addEventListener('click', function () {
     const userClick = document.getElementById('card5');
     const cuisine = 55; // cuisine ID for italian
-    restaurantOverlay.classList.toggle('open');
     getEstablishmentsByCity(cityID, cuisine);
 });
 
@@ -168,13 +164,13 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 p.innerText = restaurantAddress;
                 timings.innerText = restaurantHours;
                 a.innerText = 'Website';
-                a.setAttribute('src', restaurantWebsite);
+                a.setAttribute('href', restaurantWebsite);
                 restaurantContainer.appendChild(h1);
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
                 restaurantContainer.appendChild(a);
-                
-                
+
+
             });
         });
 }
