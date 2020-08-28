@@ -172,13 +172,13 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 p.innerText = restaurantAddress;
                 timings.innerText = restaurantHours;
                 a.innerText = 'Website';
-                a.setAttribute('src', restaurantWebsite);
+                a.setAttribute('href', restaurantWebsite);
                 restaurantContainer.appendChild(h1);
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
                 restaurantContainer.appendChild(a);
-                
-                
+
+
             });
         });
 }
