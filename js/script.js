@@ -11,8 +11,6 @@ const cards = document.querySelectorAll('.card'),
     card6 = document.getElementById('card6'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
 
-let help;
-
 
 card1.addEventListener('click', function () {
     const userClick = document.getElementById('card1');
