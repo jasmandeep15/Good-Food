@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front-End-Project</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,9 +15,11 @@
     <div class="jumbotron">
         <h1 class="display-4"><strong>Good Eats!</strong></h1>
         <p class="lead"><i>Welcome to Good Eats!</i></p>
-        <p>Where you are able to pick the food you want based off of your location
-            from resturants in your local area.</p>
+        <p>Where you are able to pick the food you want based off of your location from resturants in your local area.</p>
         <p>Start by typing in your city and enjoy your Good Eats!</p>
+    <div>
+    </div>        
+    <h2 class="header">Choose a cuisine to see restaurants in:<strong><span id="currentCity" ></span></strong> </h2>
     </div>
     <div class="modal-overlay">
         <div class="modal-content">
@@ -27,10 +30,8 @@
             </form>
         </div>
     </div>
-
-    <h2 class="header" "header-container">Choose a cuisine to see restaurants in: <strong><span id="currentCity"></span></strong> </h2>
-
     <div class="card-container">
+
         <div class="card" id="card1">
 
             <div class="card-image">
@@ -80,7 +81,7 @@
             </div>
             <div class="card-content">
                 <a><strong>BBQ!</strong></a>
-                <p>So good make you wanna slap yo momma!</p>
+                So good make you wanna slap yo momma!
             </div>
         </div>
 
@@ -93,14 +94,14 @@
                 </figure>
             </div>
             <div class="card-content">
-            <a><strong>Pasta and Magic</strong></a></div>
+                <a><strong>Pasta and Magic</strong></a></div>
         </div>
 
         <div class="card" id="card6">
             <div class="card-image">
                 <figure class="image is-4by3">
                     <img src="https://images.unsplash.com/photo-1484069560501-87d72b0c3669?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                        alt="Placeholder image" id="americanFoodPicture">
+                        alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -114,15 +115,14 @@
         <form>
             <p class="close-modal-x" id="close-modal">Close</p>
         </form>>
-        
-            <div class="container bg-img" id="restaurantContainer">
-                <div class="spinner-border text-light" role="status" id="spinner">
-                </div>
-                <span class="sr-only">Loading...</span>
+        <div class="container bg-img" id="restaurantContainer">
+            <div class="spinner-border text-light" role="status" id="spinner">
             </div>
-        
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
+
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
