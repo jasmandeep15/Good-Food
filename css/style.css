@@ -75,6 +75,17 @@ body {
     z-index: 10000;
     text-align: center;
 }
+
+.modal-city-list {
+    list-style-type: none;
+    margin: 5px;
+}
+
+.modal-city-list:hover {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
 .restaurant-overlay {
     background-color: rgba(0, 0, 0, 0.7);
     bottom: 0;
@@ -90,12 +101,13 @@ body {
 }
 
 .close-modal-x {
-    position: fixed-bottom;
+    position: absolute;
     bottom: 5px;
     background-color: lightslategray;
     color: black;
     padding: 10px 20px;
     border: 5px solid black;
+    z-index: 10000;
 }
 
 .container {
@@ -112,4 +124,8 @@ body {
 }
 .container bg-img {
     background-color: rgb(7, 108, 133);
+}
+
+.example-title {
+    color: white;
 }
