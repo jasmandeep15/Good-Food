@@ -15,12 +15,13 @@
     <div class="jumbotron">
         <h1 class="display-4"><strong>Good Eats!</strong></h1>
         <p class="lead"><i>Welcome to Good Eats!</i></p>
+
         <p>Here you are able to pick the food you want based off of your location from resturants in your local area.</p>
         <p>Start by typing in your city and enjoy your Good Eats!</p>
         <div>
         <h2 class="header">Choose a cuisine to see restaurants in:  <strong><span id="currentCity"></span></strong></h2>
         </div>      
-    </div>
+  </div>
     <div class="modal-overlay">
         <div class="modal-content">
             <form>
@@ -109,12 +110,17 @@
         </div>
 
     </div>
-    <div class="restaurant-overlay"
-            <input type="submit"></input>
-            <p class="close-modal-x" id="close-modal">Close</p>
+
+    <div class="restaurant-overlay">
+        <p class="close-modal-x" id="close-modal">Close</p>
         <div class="container bg-img" id="restaurantContainer">
+            <div class="spinner-border text-light" role="status" id="spinner">
+            </div>
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
+
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

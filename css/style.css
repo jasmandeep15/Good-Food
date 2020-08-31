@@ -1,5 +1,6 @@
 body {
-    background-image: url('/goodeatslogoagain.jpg');
+
+    background-image: url('../goodeatslogoagain.jpg');
     background-attachment: fixed;
 }
 
@@ -129,56 +130,9 @@ body {
 .restaurant-overlay.open {
     display: flex;
 }
+
+
 .container bg-img {
     background-color: rgb(7, 108, 133);
     border: radius;
 }
-
-.example-title {
-    color: white;
-}
-@keyframes tonext {
-    10% {
-      left: 0;
-    }
-    10% {
-      left: 100%;
-    }
-    10% {
-      left: 100%;
-    }
-    10% {
-      left: 0;
-    }
-  }
-  
-  @keyframes tostart {
-    10% {
-      left: 0;
-    }
-    10% {
-      left: -300%;
-    }
-    10% {
-      left: -300%;
-    }
-    10% {
-      left: 0;
-    }
-  }
-  
-  @keyframes snap {
-    10% {
-      scroll-snap-align: center;
-    }
-    10% {
-      scroll-snap-align: none;
-    }
-    10% {
-      scroll-snap-align: none;
-    }
-    10% {
-      scroll-snap-align: center;
-    }
-  }
-  
