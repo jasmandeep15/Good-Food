@@ -1,4 +1,5 @@
 'use strict';
+
 const cards = document.querySelectorAll('.card'),
     cityInput = document.getElementById('cityInput'),
     submitButton = document.getElementById('submitButton'),
@@ -6,40 +7,52 @@ const cards = document.querySelectorAll('.card'),
     restaurantContainer = document.getElementById('restaurantContainer'),
     restaurantOverlay = document.querySelector('.restaurant-overlay'),
     closeModal = document.getElementById('close-modal'),
+    spinner = document.getElementById('spinner'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
-
-
 
 let cityID;
 
 
+
+
 cards.forEach(item => {
     item.addEventListener('click', () => {
-        restaurantContainer.innerHTML = '';
         switch (item.id) {
             case 'card1':
                 restaurantOverlay.classList.toggle('open');
+                setTimeout(function(){
                 getEstablishmentsByCity(cityID, 168);
+                },2000);
                 break;
             case 'card2':
                 restaurantOverlay.classList.toggle('open');
+                setTimeout(function(){
                 getEstablishmentsByCity(cityID, 82);
+                },2000);
                 break;
             case 'card3':
                 restaurantOverlay.classList.toggle('open');
+                setTimeout(function(){
                 getEstablishmentsByCity(cityID, 83);
+                },2000);
                 break;
             case 'card4':
                 restaurantOverlay.classList.toggle('open');
+                setTimeout(function(){
                 getEstablishmentsByCity(cityID, 193);
+                },2000);
                 break;
             case 'card5':
                 restaurantOverlay.classList.toggle('open');
+                setTimeout(function(){
                 getEstablishmentsByCity(cityID, 55);
+                },2000);
                 break;
             case 'card6':
                 restaurantOverlay.classList.toggle('open');
+                setTimeout(function(){
                 getRandomCuisineByCity(cityID);
+                },2000);
                 break;
             default:
                 console.log('Default');
@@ -47,18 +60,22 @@ cards.forEach(item => {
     })
 });
 
+
 closeModal.addEventListener('click', function () {
     restaurantOverlay.classList.toggle('open');
 });
+
 
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     getListOfCities(cityInput.value)
 });
 
+
 function fetchZomatoAPI(url) {
     const fetchVar = fetch(url, {
         headers: { 'user-key': apiKey },
+
     })
         .then((res) => {
             return res.json();
@@ -128,7 +145,6 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 let long = item.restaurant.location.longitude;
                 console.log(restaurantName, lat, long);
 
-
                 restaurantContainer.classList.add('has-text-primary-light');
                 const h1 = document.createElement('h1');
                 h1.classList.add('title');
@@ -173,14 +189,13 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
                 restaurantContainer.appendChild(a);
+
                 restaurantContainer.appendChild(mapDiv);
                 restaurantContainer.appendChild(document.createElement('hr'));
 
             });
         });
 }
-
-
 
 
 // Pexel API - Random pictures displayed on selection cards
@@ -216,7 +231,7 @@ function getRandomPicture(category, element) {
     return fetchVar;
 };
 
-// getRandomPicture('American food', americanFood);
+
 // getRandomPicture('Burger', burgers);
 // getRandomPicture('Pizza', pizzaPicture);
 // getRandomPicture('Seafood', seafoodPicture);
