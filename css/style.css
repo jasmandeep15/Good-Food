@@ -1,6 +1,6 @@
 body {
-    background-image: url('/goodeatslogoagain.jpg');
-    background-size: auto;
+
+    background-image: url('../goodeatslogoagain.jpg');
     background-attachment: fixed;
 }
 
@@ -134,14 +134,20 @@ body {
     display: flex;
 }
 
+
 .container bg-img {
     background-color: rgb(7, 108, 133);
 }
 
-.example-title {
-    color: white;
-}
 
 #spinner.show {
     display: block;
+}
+
+.map-div {
+    height: 180px;
+}
+
+hr {
+    margin-top: 50px;
 }
