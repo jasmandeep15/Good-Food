@@ -67,6 +67,7 @@ submitButton.addEventListener('click', function (e) {
 
 closeModal.addEventListener('click', function () {
     restaurantOverlay.classList.toggle('open');
+    restaurantContainer.innerHTML = "";
 });
 
 function getCityId(city) {
@@ -142,12 +143,8 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 let restaurantAddress = item.restaurant.location.address;
                 let restaurantHours = item.restaurant.timings;
                 let restaurantWebsite = item.restaurant.url;
-                console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
 
-
-
-
-                restaurantContainer.classList.add//('has-background-info-dark');
+                //restaurantContainer.classList.add('has-background-info-dark');
                 restaurantContainer.classList.add('has-text-primary-light');
                 const h1 = document.createElement('h1');
                 h1.classList.add('title');
@@ -185,7 +182,6 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
 // Pexel API - Random pictures displayed on selection cards
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
-const americanFood = document.getElementById('americanFoodPicture');
 const burgers = document.getElementById('burgerPicture');
 const pizzaPicture = document.getElementById('pizzaPicture');
 const seafoodPicture = document.getElementById('seafoodPicture');
@@ -219,7 +215,7 @@ function getRandomPicture(category, element) {
     return fetchVar;
 };
 
-// getRandomPicture('American food', americanFood);
+
 // getRandomPicture('Burger', burgers);
 // getRandomPicture('Pizza', pizzaPicture);
 // getRandomPicture('Seafood', seafoodPicture);

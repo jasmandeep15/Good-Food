@@ -1,5 +1,6 @@
 body {
     background-image: url('/goodeatslogoagain.jpg');
+    background-size: auto;
     background-attachment: fixed;
 }
 
@@ -90,7 +91,7 @@ body {
 }
 
 .close-modal-x {
-    position: fixed-bottom;
+    position: relative;
     bottom: 5px;
     background-color: lightslategray;
     color: black;
