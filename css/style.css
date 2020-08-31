@@ -111,6 +111,15 @@ body {
 .restaurant-overlay.open {
     display: flex;
 }
+
 .container bg-img {
     background-color: rgb(7, 108, 133);
+}
+
+#spinner {
+    visibility: hidden;
+}
+
+#spinner.show {
+    visibility: visible;
 }
