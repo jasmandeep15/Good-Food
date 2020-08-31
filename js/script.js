@@ -10,54 +10,98 @@ const cards = document.querySelectorAll('.card'),
     card5 = document.getElementById('card5'),
     card6 = document.getElementById('card6'),
     restaurantOverlay = document.querySelector('.restaurant-overlay'),
+    closeModal = document.getElementById('close-modal'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
+
+
+
 let cityID;
 let cuisine;
 
-card1.addEventListener('click', function () {
-    const userClick = document.getElementById('card1');
+
+cards.forEach(item => {
+    item.addEventListener('click', () => {
+        switch (item.id) {
+            case 'card1':
+                restaurantOverlay.classList.toggle('open');
+                getEstablishmentsByCity(cityID, 168);
+                break;
+            case 'card2':
+                restaurantOverlay.classList.toggle('open');
+                getEstablishmentsByCity(cityID, 82);
+                break;
+            case 'card3':
+                restaurantOverlay.classList.toggle('open');
+                getEstablishmentsByCity(cityID, 83);
+                break;
+            case 'card4':
+                restaurantOverlay.classList.toggle('open');
+                getEstablishmentsByCity(cityID, 193);
+                break;
+            case 'card5':
+                restaurantOverlay.classList.toggle('open');
+                getEstablishmentsByCity(cityID, 55);
+                break;
+            case 'card6':
+                restaurantOverlay.classList.toggle('open');
+                getRandomCuisineByCity(cityID);
+                break;
+            default:
+                console.log('Default');
+        }
+    })
+});
+
+
+closeModal.addEventListener('click', function () {
     restaurantOverlay.classList.toggle('open');
-    const cuisine = 168; // cuisine ID for burgers
-    getEstablishmentsByCity(cityID, cuisine);
-});
 
-card2.addEventListener('click', function () {
-    const userClick = document.getElementById('card2');
-    const cuisine = 82; // cuisine ID for pizza
-    getEstablishmentsByCity(cityID, cuisine);
-});
-
-card3.addEventListener('click', function () {
-    const userClick = document.getElementById('card3');
-    const cuisine = 83; // cuisine ID for seafood
-    getEstablishmentsByCity(cityID, cuisine);
-});
-
-card4.addEventListener('click', function () {
-    const userClick = document.getElementById('card4');
-    const cuisine = 193; // cuisine ID for bbq
-    getEstablishmentsByCity(cityID, cuisine);
-});
-
-card5.addEventListener('click', function () {
-    const userClick = document.getElementById('card5');
-    const cuisine = 55; // cuisine ID for italian
-    getEstablishmentsByCity(cityID, cuisine);
-});
-
-card6.addEventListener('click', function () {
-    const userClick = document.getElementById('card6');
-
-    getRandomCuisineByCity(cityID);
 });
 
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
-    modalOverlay.classList.toggle('open');
-    getCityId(cityInput.value).then(aCityID => {
-        cityID = aCityID;
-    });
+    getListOfCities(cityInput.value)
 });
+
+
+
+
+
+function getListOfCities(city) {
+    const modalContent = document.querySelector('.modal-content')
+    let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
+    fetch(url, {
+        headers: {
+            'user-key': apiKey,
+        },
+    })
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .then((res) => {
+            console.log(res.location_suggestions);
+            res.location_suggestions.forEach((item) => {
+                let li = document.createElement('li');
+                li.classList.add('modal-city-list');
+                // li.setAttribute('id',)
+                console.log(item)
+                li.innerText = item.name;
+                modalContent.appendChild(li);
+                li.addEventListener('click', () => {
+                    modalOverlay.classList.toggle('open');
+                    currentCity.innerText = item.name;
+                    setCityId(item.id);
+                })
+            });
+        })
+};
+
+function setCityId(id) {
+    cityID = id;
+}
 
 function getCityId(city) {
     const currentCity = document.getElementById('currentCity');
@@ -76,20 +120,19 @@ function getCityId(city) {
         .then((res) => {
             console.log(res.location_suggestions[0].name);
             currentCity.innerText = res.location_suggestions[0].name;
-            //console.log(cityID);
-            //getCusineByCity(res.location_suggestions[0].id)
             return res.location_suggestions[0].id;
         });
     return fetchVar;
 };
 
-function randomNumber(min, max) {  
+
+function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
-}  
+}
 
 function getRandomCuisineByCity(cityID) {
     let url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityID}`;
-    
+
     fetch(url, {
         headers: {
             'user-key': apiKey,
@@ -134,8 +177,6 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
 
 
-
-
                 restaurantContainer.classList.add('has-background-info-dark');
                 restaurantContainer.classList.add('has-text-primary-light');
                 const h1 = document.createElement('h1');
@@ -150,6 +191,12 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 const a = document.createElement('a');
                 a.classList.add('pb');
                 a.classList.add('has-text-black');
+                a.classList.add('has-text-strong');
+                a.classList.add('has-text-border');
+
+                const mapDiv = document.createElement('div');
+                mapDiv.classList.add('map-div');
+
 
                 const timings = document.createElement('p');
 
@@ -157,7 +204,7 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 p.innerText = restaurantAddress;
                 timings.innerText = restaurantHours;
                 a.innerText = 'Website';
-                a.setAttribute('src', restaurantWebsite);
+                a.setAttribute('href', restaurantWebsite);
                 restaurantContainer.appendChild(h1);
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
@@ -169,19 +216,17 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
 
 
+
 // Pexel API - Random pictures displayed on selection cards
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
-const americanFood = document.getElementById('americanFoodPicture');
 const burgers = document.getElementById('burgerPicture');
 const pizzaPicture = document.getElementById('pizzaPicture');
 const seafoodPicture = document.getElementById('seafoodPicture');
 const bbqPicture = document.getElementById('bbqPicture');
-const italianPicture = document.getElementById('italianPicture');
-
-
+const pastaPicture = document.getElementById('italianPicture');
 
 function getRandomPicture(category, element) {
-    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=1`;
+    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=5`;
     let fetchVar = fetch(url, {
         headers: {
             'Authorization': pexelApiKey,
@@ -210,4 +255,4 @@ function getRandomPicture(category, element) {
 // getRandomPicture('Pizza', pizzaPicture);
 // getRandomPicture('Seafood', seafoodPicture);
 // getRandomPicture('BBQ pork', bbqPicture);
-// getRandomPicture('Pasta', italianPicture);
+// getRandomPicture('Pasta', pastaPicture);
