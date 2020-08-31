@@ -52,8 +52,10 @@ cards.forEach(item => {
     })
 });
 
+
 closeModal.addEventListener('click', function () {
     restaurantOverlay.classList.toggle('open');
+
 });
 
 submitButton.addEventListener('click', function (e) {
