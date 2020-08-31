@@ -16,22 +16,36 @@ body {
 .card {
     margin: 10px;
     padding: 15px;
+    background-color: slategrey;
     text-align: center;
     width: 300px;
 }
 
 .jumbotron {
+    margin: auto;
+    padding: 50px 32px;
     text-align: center;
-    
 }
 
+.header-container {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    max-width: 1000px;
+}
 .header {
-    background-color: white;
+    background-color: lightslategrey;
     font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    padding: 15px;
+    max-width: 950px;
     text-align: center;
+    text-decoration-color: azure;
+    justify-content: center;
 }
 
 .modal-overlay {
@@ -61,52 +75,13 @@ body {
     z-index: 10000;
     text-align: center;
 }
-
-/* Annemarie */
-.text {
-    
-    color: rgb(83, 9, 79);
-    margin: 10px;
-    padding: 15px;
-    position: relative;
-    text-align: center;
-    width: 300px;
-}
-
-.p-text {
-    color: rgb(83, 9, 79);
-    margin: 10px;
-    padding: 15px;
-    position: relative;
-    text-align: center;
-    width: 300px;
-
-}
-
-.input-text {
-    color: rgb(83, 9, 79);
-    position: relative;
-    margin: 10px;
-    padding: 15px;
-    text-align: center;
-    width: 300px;
-}
-
-.bg-img {
-    background-color: white;
-    background: url("");
-    background-position: center;
-    background-size: cover;
-    width: 500px;
-    height: 800px;
-}
-
 .restaurant-overlay {
     background-color: rgba(0, 0, 0, 0.7);
     bottom: 0;
     display: none;
     justify-content: center;
-    align-items: center;    height: 100vh;
+    align-items: center;    
+    height: 100vh;
     left: 0;
     position: fixed;
     right: 0;
@@ -115,16 +90,16 @@ body {
 }
 
 .close-modal-x {
-    position: absolute;
+    position: fixed-bottom;
     bottom: 5px;
-    background-color: white;
+    background-color: lightslategray;
     color: black;
     padding: 10px 20px;
     border: 5px solid black;
 }
 
 .container {
-    background-color: #1d72aa;
+    background-color:lightslategray;
     height: 90%;
     overflow: scroll;
     overflow-x: hidden;
@@ -134,4 +109,7 @@ body {
 
 .restaurant-overlay.open {
     display: flex;
+}
+.container bg-img {
+    background-color: rgb(7, 108, 133);
 }

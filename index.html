@@ -12,21 +12,23 @@
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Good Eats!</h1>
-        <p class="lead">Welcome to Good Eats! where you are able to pick the food you want based off of your location
-            and pictures from resturants in your local area. Start by typing in your city and enjoy your Good Eats!</p>
+        <h1 class="display-4"><strong>Good Eats!</strong></h1>
+        <p class="lead"><i>Welcome to Good Eats!</i></p>
+        <p>Where you are able to pick the food you want based off of your location
+            from resturants in your local area.</p>
+        <p>Start by typing in your city and enjoy your Good Eats!</p>
     </div>
     <div class="modal-overlay">
         <div class="modal-content">
             <form>
-                Where are you hungry?
+                Hungry! What to eat?
                 <input type="text" id="cityInput" placeholder="Enter City" />
                 <button id="submitButton">Submit</button>
             </form>
         </div>
     </div>
 
-    <h2 class="header">Choose a cuisine to see restaurants in <span id="currentCity"> </span> </h2>
+    <h2 class="header" "header-container">Choose a cuisine to see restaurants in: <strong><span id="currentCity"></span></strong> </h2>
 
     <div class="card-container">
         <div class="card" id="card1">
@@ -38,7 +40,7 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a> Burgersss</a>
+                <a><strong>Burgersss</strong></a>
             </div>
         </div>
 
@@ -46,12 +48,12 @@
 
             <div class="card-image">
                 <figure class=" image is-4by3">
-                    <img src="https://images.unsplash.com/photo-1589477500339-82aeb8718167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    <img src="https://images.unsplash.com/photo-1559183533-ee5f4826d3db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1613&q=80"
                         alt="Placeholder image" id="pizzaPicture">
                 </figure>
             </div>
             <div class="card-content">
-                <a>Pizzzzzzzaaa</a>
+                <a><strong>Pizzzzzzzaaa</strong></a>
             </div>
         </div>
 
@@ -59,12 +61,12 @@
 
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="https://images.unsplash.com/photo-1569494315581-abddb8d41cfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    <img src="https://images.unsplash.com/photo-1448043552756-e747b7a2b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1549&q=80"
                         alt="Placeholder image" id="seafoodPicture">
                 </figure>
             </div>
             <div class="card-content">
-                <a>SeaFood!</a>
+                <a><strong>SeaFood!</strong></a>
             </div>
         </div>
 
@@ -72,12 +74,13 @@
 
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="https://images.unsplash.com/photo-1508615263227-c5d58c1e5821?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    <img src="https://images.unsplash.com/photo-1588348141545-dfb22824ced3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
                         alt="Placeholder image" id="bbqPicture">
                 </figure>
             </div>
             <div class="card-content">
-                <a>BBQ! So good make you wanna slap yo momma!</a>
+                <a><strong>BBQ!</strong></a>
+                <p>So good make you wanna slap yo momma!</p>
             </div>
         </div>
 
@@ -85,12 +88,12 @@
 
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="https://images.unsplash.com/photo-1506280754576-f6fa8a873550?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    <img src="https://images.unsplash.com/photo-1561296953-ac366f34b9d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
                         id="italianPicture">
                 </figure>
             </div>
             <div class="card-content">
-            <a>Italian</a></div>
+            <a><strong>Pasta and Magic</strong></a></div>
         </div>
 
         <div class="card" id="card6">
@@ -101,42 +104,20 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a>RANDOM WOWOWOW</a>
+                <a><strong>RANDOM WOWOWOW</strong></a>
             </div>
         </div>
 
     </div>
-
-
-    <div class="restaurant-overlay">
-
-        <div class="container bg-img" id="restaurantContainer">
-            <!-- <h1 class="text">The input placeholder attribute</h1>
-            <p class="p-text">This is a paragraph.</p>
-            <div class=""></div>
-            <div class="input-text">
-                <input type="" id="" name="" placeholder="">
-                <input type="submit"></div> -->
-        </div>
-        <p class="close-modal-x" id="close-modal">Close</p>
-    </div>
-    {% comment %} <div class="wrapper">
-        <div class="restaurants">
-            <div class="container bg-img">
-                <h1 class="text">The input placeholder attribute</h1>
-                <p class="p-text">This is a paragraph.</p>
-                <div class=""></div>
-                <div class="input-text">
-                    <input type="" id="" name="" placeholder="">
+    
+    <div class="restaurant-overlay"
+                <form>
                     <input type="submit">
-                </div>
-         </div>
-    <div/> {% endcomment %}
-
-
-
-
-
+                    <p class="close-modal-x" id="close-modal">Close</p>
+                </form>>
+            <div class="container bg-img" id="restaurantContainer">
+            </div>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
