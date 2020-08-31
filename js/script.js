@@ -147,7 +147,7 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
 
 
-                restaurantContainer.classList.add('has-background-info-dark');
+                restaurantContainer.classList.add//('has-background-info-dark');
                 restaurantContainer.classList.add('has-text-primary-light');
                 const h1 = document.createElement('h1');
                 h1.classList.add('title');
@@ -161,6 +161,8 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 const a = document.createElement('a');
                 a.classList.add('pb');
                 a.classList.add('has-text-black');
+                a.classList.add('has-text-strong');
+                a.classList.add('has-text-border');
 
                 const timings = document.createElement('p');
 
@@ -173,7 +175,6 @@ function getEstablishmentsByCity(cityID, cuisine) {
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
                 restaurantContainer.appendChild(a);
-
 
             });
         });
@@ -189,7 +190,7 @@ const burgers = document.getElementById('burgerPicture');
 const pizzaPicture = document.getElementById('pizzaPicture');
 const seafoodPicture = document.getElementById('seafoodPicture');
 const bbqPicture = document.getElementById('bbqPicture');
-const italianPicture = document.getElementById('italianPicture');
+const pastaPicture = document.getElementById('italianPicture');
 
 
 
