@@ -178,4 +178,6 @@ body {
     }
 }
 
-
+.spinner-border text-light {
+    margin: auto;
+}
