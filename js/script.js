@@ -1,78 +1,70 @@
 'use strict';
 
-const cards = document.querySelectorAll('.card'),
-    cityInput = document.getElementById('cityInput'),
-    submitButton = document.getElementById('submitButton'),
-    modalOverlay = document.querySelector('.modal-overlay'),
-    restaurantContainer = document.getElementById('restaurantContainer'),
-    restaurantOverlay = document.querySelector('.restaurant-overlay'),
-    closeModal = document.getElementById('close-modal'),
-    spinner = document.getElementById('spinner'),
-    apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
-
 let cityID;
 let cuisine;
 
 
+(function () {
+    const restaurantOverlay = document.querySelector('.restaurant-overlay');
+    const cityInput = document.getElementById('cityInput');
+    const submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        getListOfCities(cityInput.value);
+    });
 
-cards.forEach(item => {
-    item.addEventListener('click', () => {
-        switch (item.id) {
-            case 'card1':
-                restaurantOverlay.classList.toggle('open');
-                setTimeout(function () {
+    const closeModal = document.getElementById('close-modal');
+    closeModal.addEventListener('click', function () {
+        restaurantOverlay.classList.toggle('open');
+        restaurantContainer.innerText = '';
+    });
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(item => {
+        const spinner = document.getElementById('spinner');
+        item.addEventListener('click', () => {
+            switch (item.id) {
+                case 'card1':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
                     getEstablishmentsByCity(cityID, 168);
-                }, 2000);
-                break;
-            case 'card2':
-                restaurantOverlay.classList.toggle('open');
-                setTimeout(function () {
+                    break;
+                case 'card2':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
                     getEstablishmentsByCity(cityID, 82);
-                }, 2000);
-                break;
-            case 'card3':
-                restaurantOverlay.classList.toggle('open');
-                setTimeout(function () {
+                    break;
+                case 'card3':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
                     getEstablishmentsByCity(cityID, 83);
-                }, 2000);
-                break;
-            case 'card4':
-                restaurantOverlay.classList.toggle('open');
-                setTimeout(function () {
+                    break;
+                case 'card4':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
                     getEstablishmentsByCity(cityID, 193);
-                }, 2000);
-                break;
-            case 'card5':
-                restaurantOverlay.classList.toggle('open');
-                setTimeout(function () {
+                    break;
+                case 'card5':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
                     getEstablishmentsByCity(cityID, 55);
-                }, 2000);
-                break;
-            case 'card6':
-                restaurantOverlay.classList.toggle('open');
-                setTimeout(function () {
+                    break;
+                case 'card6':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
                     getRandomCuisineByCity(cityID);
-                }, 2000);
-                break;
-            default:
-                console.log('Default');
-        }
-    })
-});
+                    break;
+                default:
+                    console.log('Default');
+            }
+        });
+    });
+})()
 
-
-closeModal.addEventListener('click', function () {
-    restaurantOverlay.classList.toggle('open');
-});
-
-
-submitButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    getListOfCities(cityInput.value)
-});
 
 
 function fetchZomatoAPI(url) {
+    const apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
     const fetchVar = fetch(url, {
         headers: { 'user-key': apiKey },
 
@@ -88,6 +80,7 @@ function fetchZomatoAPI(url) {
 
 
 function getListOfCities(city) {
+    const modalOverlay = document.querySelector('.modal-overlay');
     const modalContent = document.querySelector('.modal-content')
     let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
     fetchZomatoAPI(url)
@@ -130,22 +123,26 @@ function getRandomCuisineByCity(cityID) {
 }
 
 function getEstablishmentsByCity(cityID, cuisine) {
+    const restaurantContainer = document.getElementById('restaurantContainer')
     let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetchZomatoAPI(url)
         .then((res) => {
             restaurantContainer.innerHTML = '';
             res.restaurants.forEach((item) => {
-
                 let restaurantName = item.restaurant.name;
                 let restaurantAddress = item.restaurant.location.address;
                 let restaurantHours = item.restaurant.timings;
                 let restaurantWebsite = item.restaurant.url;
+                let cuisineName = item.restaurant.cuisines;
                 //console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
                 let lat = item.restaurant.location.latitude;
                 let long = item.restaurant.location.longitude;
                 console.log(restaurantName, lat, long);
 
                 restaurantContainer.classList.add('has-text-primary-light');
+                const cuisineHeader = document.createElement('h1');
+                cuisineHeader.classList.add('cuisine-header');
+
                 const h1 = document.createElement('h1');
                 h1.classList.add('title');
                 h1.classList.add('pt-4');
@@ -180,11 +177,13 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
                 const timings = document.createElement('p');
 
+                cuisineHeader.innerText = "Cuisine(s): " + cuisineName;
                 h1.innerText = restaurantName;
                 p.innerText = restaurantAddress;
                 timings.innerText = restaurantHours;
                 a.innerText = 'Website';
                 a.setAttribute('href', restaurantWebsite);
+                restaurantContainer.appendChild(cuisineHeader);
                 restaurantContainer.appendChild(h1);
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
