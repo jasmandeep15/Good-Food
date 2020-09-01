@@ -44,7 +44,9 @@ body {
     text-align: center;
     position: fixed;
     z-index: 9999;
-    width: 100%;
+    font-family: monospace;
+    max-width: 800px;
+    
 }
 
 .header {
@@ -136,3 +138,16 @@ body {
     background-color: rgb(7, 108, 133);
     border: radius;
 }
+
+.paragraph1 {
+    font-style: inherit;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    max-width: 800px;
+    margin: auto;
+}
+
+.random-wow {
+    font-size-adjust: inherit;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
