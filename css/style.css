@@ -13,7 +13,7 @@ body {
     justify-content: center;
     margin: auto;
     max-width: 1000px;
-    padding-top: 245px;
+    padding-top: 15px;
     padding-bottom: 15px;
 }
 
@@ -39,13 +39,33 @@ body {
     color: darkslategrey;
     font-size: 23px;
 }
-.jumbotron {
-    margin: auto;
+
+.jumbo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+.jumbotron{
+    margin: 0 auto;
     padding: 0px 0px;
     text-align: center;
-    position: fixed;
     z-index: 9999;
-    width: 100%;
+    font-family: monospace;
+    
+
+
+    /* max-width: 800px;
+    justify-content: center; */
+    
+}
+
+.paragraph1 {
+    max-width: 800px;
+    margin: auto;
 }
 
 .header {
@@ -158,4 +178,5 @@ body {
         font-size: 18px;
     }
 }
+
 
