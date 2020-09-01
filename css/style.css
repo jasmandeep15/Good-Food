@@ -5,7 +5,8 @@ body {
 }
 
 .card-container {
-    border-radius: 20px;
+    border-radius: 30px;
+    border:black;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,7 +33,7 @@ body {
     color: #f5f5f5;
 }
 .card-image {
-    border: radius;
+    border-radius: 30px;
 }
 .lead {
     color: darkslategrey;
