@@ -231,17 +231,9 @@ function getRandomPicture(category, element) {
     return fetchVar;
 };
 
-
+getRandomPicture();
 // getRandomPicture('Burger', burgers);
 // getRandomPicture('Pizza', pizzaPicture);
 // getRandomPicture('Seafood', seafoodPicture);
 // getRandomPicture('BBQ pork', bbqPicture);
 // getRandomPicture('Pasta', pastaPicture);
-
-// var rangeslider = document.getElementById("sliderRange");
-// var output = document.getElementById("demo");
-// output.innerHTML = rangeslider.value;
-
-// rangeslider.oninput = function() {
-//   output.innerHTML = this.value;
-// }

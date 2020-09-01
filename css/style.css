@@ -1,6 +1,6 @@
 body {
 
-    background-image: url('../goodeatslogoagain.jpg');
+    background-image: url('../backgroundagainagain.jpg');
     background-attachment: fixed;
 }
 
@@ -28,17 +28,19 @@ body {
 .card-content {
     margin: .5px;
     padding: 10px;
-    border: radius;
     font-size: 20px;
     color: #f5f5f5;
 }
+
 .card-image {
     border-radius: 30px;
 }
+
 .lead {
     color: darkslategrey;
     font-size: 23px;
 }
+
 
 .jumbo-wrapper {
     display: flex;
@@ -102,7 +104,7 @@ body {
 
 .modal-content {
     background-color: #efefefdb;
-    border-radius: 6px;
+    border-radius: 15px;
     margin: auto;
     max-width: 300px;
     padding: 15px;
@@ -139,19 +141,21 @@ body {
     position: absolute;
     bottom: 5px;
     background-color: lightslategray;
+    border-radius: 10px;
     color: black;
     padding: 10px 20px;
-    border: 5px solid black;
+    border: 3px solid black;
     z-index: 10000;
 }
 
 .container {
     background-color:lightslategray;
+    border-radius: 10px;
     height: 90%;
     overflow: scroll;
     overflow-x: hidden;
     padding: 30px 50px;
-    border: 5px solid black;
+    border: 2px solid black;
 }
 
 .restaurant-overlay.open {
@@ -179,6 +183,9 @@ body {
     }
 }
 
-.spinner-border text-light {
-    margin: auto;
+#spinner {
+    display: block;
+    margin: 300px auto;
 }
+
+
