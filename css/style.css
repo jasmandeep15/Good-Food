@@ -56,6 +56,12 @@ body {
     justify-content: center;
 }
 
+.header a {
+    font-size: 12px;
+    margin: auto 0px auto 5px;
+    color: white;
+}
+
 .modal-overlay {
     background-color: rgba(0, 0, 0, 0.7);
     bottom: 0;
@@ -135,4 +141,14 @@ body {
 .container bg-img {
     background-color: rgb(7, 108, 133);
     border: radius;
+}
+
+.current-city {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 640px) {
+    .header {
+        font-size: 18px;
+    }
 }
