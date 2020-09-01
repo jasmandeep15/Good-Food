@@ -1,71 +1,70 @@
 'use strict';
 
-const cards = document.querySelectorAll('.card'),
-    cityInput = document.getElementById('cityInput'),
-    submitButton = document.getElementById('submitButton'),
-    modalOverlay = document.querySelector('.modal-overlay'),
-    restaurantContainer = document.getElementById('restaurantContainer'),
-    restaurantOverlay = document.querySelector('.restaurant-overlay'),
-    closeModal = document.getElementById('close-modal'),
-    apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
-
 let cityID;
 let cuisine;
 
-cards.forEach(item => {
-    const spinner = document.getElementById('spinner');
-    item.addEventListener('click', () => {
-        switch (item.id) {
-            case 'card1':
-                restaurantOverlay.classList.toggle('open');
-                restaurantContainer.append(spinner);
-                getEstablishmentsByCity(cityID, 168);
-                break;
-            case 'card2':
-                restaurantOverlay.classList.toggle('open');
-                restaurantContainer.append(spinner);
-                getEstablishmentsByCity(cityID, 82);
-                break;
-            case 'card3':
-                restaurantOverlay.classList.toggle('open');
-                restaurantContainer.append(spinner);
-                getEstablishmentsByCity(cityID, 83);
-                break;
-            case 'card4':
-                restaurantOverlay.classList.toggle('open');
-                restaurantContainer.append(spinner);
-                getEstablishmentsByCity(cityID, 193);
-                break;
-            case 'card5':
-                restaurantOverlay.classList.toggle('open');
-                restaurantContainer.append(spinner);
-                getEstablishmentsByCity(cityID, 55);
-                break;
-            case 'card6':
-                restaurantOverlay.classList.toggle('open');
-                restaurantContainer.append(spinner);
-                getRandomCuisineByCity(cityID);
-                break;
-            default:
-                console.log('Default');
-        }
+
+(function () {
+    const restaurantOverlay = document.querySelector('.restaurant-overlay');
+    const cityInput = document.getElementById('cityInput');
+    const submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        getListOfCities(cityInput.value);
     });
-});
 
+    const closeModal = document.getElementById('close-modal');
+    closeModal.addEventListener('click', function () {
+        restaurantOverlay.classList.toggle('open');
+        restaurantContainer.innerText = '';
+    });
 
-closeModal.addEventListener('click', function () {
-    restaurantOverlay.classList.toggle('open');
-    restaurantContainer.innerText='';
-});
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(item => {
+        const spinner = document.getElementById('spinner');
+        item.addEventListener('click', () => {
+            switch (item.id) {
+                case 'card1':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 168);
+                    break;
+                case 'card2':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 82);
+                    break;
+                case 'card3':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 83);
+                    break;
+                case 'card4':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 193);
+                    break;
+                case 'card5':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 55);
+                    break;
+                case 'card6':
+                    restaurantOverlay.classList.toggle('open');
+                    restaurantContainer.append(spinner);
+                    getRandomCuisineByCity(cityID);
+                    break;
+                default:
+                    console.log('Default');
+            }
+        });
+    });
+})()
 
-
-submitButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    getListOfCities(cityInput.value)
-});
 
 
 function fetchZomatoAPI(url) {
+    const apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
     const fetchVar = fetch(url, {
         headers: { 'user-key': apiKey },
 
@@ -81,6 +80,7 @@ function fetchZomatoAPI(url) {
 
 
 function getListOfCities(city) {
+    const modalOverlay = document.querySelector('.modal-overlay');
     const modalContent = document.querySelector('.modal-content')
     let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
     fetchZomatoAPI(url)
@@ -123,6 +123,7 @@ function getRandomCuisineByCity(cityID) {
 }
 
 function getEstablishmentsByCity(cityID, cuisine) {
+    const restaurantContainer = document.getElementById('restaurantContainer')
     let url = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&start=1&count=6&cuisines=${cuisine}&sort=rating`;
     fetchZomatoAPI(url)
         .then((res) => {
