@@ -15,17 +15,23 @@
     <div class="jumbotron">
         <h1 class="display-4"><strong>Good Eats!</strong></h1>
         <p class="lead"><i>Welcome to Good Eats!</i></p>
-        <p>Here you are able to pick the food you want based off of your location from resturants in your local area.</p>
-        <p>Start by typing in your city and enjoy your Good Eats!</p>
         <div>
-        <h2 class="header">Choose a cuisine to see restaurants in: <strong><span id="currentCity"></span></strong></h2>
-        </div>      
-  </div>
+            <h2 class="header">Choose a cuisine to see restaurants in:
+                <strong>
+                    <span class="current-city" id="currentCity"></span>
+                </strong>
+                <a href="index.html">Select new city</a>
+            </h2>
+        </div>
+    </div>
     <div class="modal-overlay">
         <div class="modal-content">
             <form>
-                Hungry! What to eat and Where?
-                <input type="text" id="cityInput" placeholder="Enter City" />
+            <p><strong>Welcome to Good Eats!</strong></p>
+                <p>Here you are able to pick the food you want based off of your location from resturants in your local area.
+                </p>
+                <p>Start by typing in your city and enjoy your Good Eats!</p>
+                <input type="text" id="cityInput" placeholder="Enter City Name" />
                 <button id="submitButton">Submit</button>
             </form>
         </div>
@@ -41,7 +47,7 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a><strong>Burgersss</strong></a>
+                <a><strong>Burgers</strong></a>
             </div>
         </div>
 
@@ -54,7 +60,7 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a><strong>Pizzzzzzzaaa</strong></a>
+                <a><strong>Pizza</strong></a>
             </div>
         </div>
 
@@ -67,7 +73,7 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a><strong>SeaFood!</strong></a>
+                <a><strong>Seafood</strong></a>
             </div>
         </div>
 
@@ -80,7 +86,8 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a><strong>BBQ!</strong></a>So good make you wanna slap yo momma!
+                <a><strong>BBQ</strong></a><br />
+                <p style="font-size: 12px">So good it'll make you wanna slap yo momma!</p>
             </div>
         </div>
 
@@ -93,7 +100,7 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a><strong>Pasta and Magic</strong></a></div>
+                <a><strong>Italian</strong></a></div>
         </div>
 
         <div class="card" id="card6">
@@ -104,10 +111,10 @@
                 </figure>
             </div>
             <div class="card-content">
-                <a><strong>RANDOM WOWOWOW</strong></a>
+                <a><strong>Not sure what you want?
+                        Click here!</strong></a>
             </div>
         </div>
-
     </div>
 
     <div class="restaurant-overlay">
@@ -119,7 +126,9 @@
         </div>
     </div>
 
-    
+
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
