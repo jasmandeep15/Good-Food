@@ -231,7 +231,7 @@ function getRandomPicture(category, element) {
     return fetchVar;
 };
 
-
+getRandomPicture();
 // getRandomPicture('Burger', burgers);
 // getRandomPicture('Pizza', pizzaPicture);
 // getRandomPicture('Seafood', seafoodPicture);
