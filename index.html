@@ -5,12 +5,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front-End-Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <div class="jumbotron">
+        <h1 class="display-4"><strong>Good Eats!</strong></h1>
+        <p class="lead"><i>Welcome to Good Eats!</i></p>
+
+        <p>Here you are able to pick the food you want based off of your location from resturants in your local area.</p>
+        <p>Start by typing in your city and enjoy your Good Eats!</p>
+        <div>
+        <h2 class="header">Choose a cuisine to see restaurants in:  <strong><span id="currentCity"></span></strong></h2>
+        </div>      
+    </div>
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <form>
+                Hungry! What to eat and Where?
+                <input type="text" id="cityInput" placeholder="Enter City" />
+                <button id="submitButton">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-container">
+
+        <div class="card" id="card1">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1202&q=80"
+                        alt="Placeholder image" id="burgerPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a><strong>Burgers</strong></a>
+            </div>
+        </div>
+
+        <div class="card" id="card2">
+
+            <div class="card-image">
+                <figure class=" image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1559183533-ee5f4826d3db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1613&q=80"
+                        alt="Placeholder image" id="pizzaPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a><strong>Pizza</strong></a>
+            </div>
+        </div>
+
+        <div class="card" id="card3">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1448043552756-e747b7a2b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1549&q=80"
+                        alt="Placeholder image" id="seafoodPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a><strong>Seafood</strong></a>
+            </div>
+        </div>
+
+        <div class="card" id="card4">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1588348141545-dfb22824ced3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                        alt="Placeholder image" id="bbqPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a><strong>BBQ</strong></a><br />
+                <p style="font-size: 12px">So good it'll make you wanna slap yo momma!</p>
+            </div>
+        </div>
+
+        <div class="card" id="card5">
+
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1561296953-ac366f34b9d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
+                        id="italianPicture">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a><strong>Italian</strong></a></div>
+            </div>
+
+        <div class="card" id="card6">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://images.unsplash.com/photo-1484069560501-87d72b0c3669?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+                        alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <a><strong>Not sure what you want? 
+                Click here!</strong></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="restaurant-overlay">
+        <p class="close-modal-x" id="close-modal">Close</p>
+        <div class="container bg-img" id="restaurantContainer">
+            <div class="spinner-border text-light" role="status" id="spinner">
+            </div>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    
+    
 
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
 
 </html>
