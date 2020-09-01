@@ -11,7 +11,7 @@ const cards = document.querySelectorAll('.card'),
     apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
 
 let cityID;
-
+let cuisine;
 
 
 
@@ -20,39 +20,39 @@ cards.forEach(item => {
         switch (item.id) {
             case 'card1':
                 restaurantOverlay.classList.toggle('open');
-                setTimeout(function(){
-                getEstablishmentsByCity(cityID, 168);
-                },2000);
+                setTimeout(function () {
+                    getEstablishmentsByCity(cityID, 168);
+                }, 2000);
                 break;
             case 'card2':
                 restaurantOverlay.classList.toggle('open');
-                setTimeout(function(){
-                getEstablishmentsByCity(cityID, 82);
-                },2000);
+                setTimeout(function () {
+                    getEstablishmentsByCity(cityID, 82);
+                }, 2000);
                 break;
             case 'card3':
                 restaurantOverlay.classList.toggle('open');
-                setTimeout(function(){
-                getEstablishmentsByCity(cityID, 83);
-                },2000);
+                setTimeout(function () {
+                    getEstablishmentsByCity(cityID, 83);
+                }, 2000);
                 break;
             case 'card4':
                 restaurantOverlay.classList.toggle('open');
-                setTimeout(function(){
-                getEstablishmentsByCity(cityID, 193);
-                },2000);
+                setTimeout(function () {
+                    getEstablishmentsByCity(cityID, 193);
+                }, 2000);
                 break;
             case 'card5':
                 restaurantOverlay.classList.toggle('open');
-                setTimeout(function(){
-                getEstablishmentsByCity(cityID, 55);
-                },2000);
+                setTimeout(function () {
+                    getEstablishmentsByCity(cityID, 55);
+                }, 2000);
                 break;
             case 'card6':
                 restaurantOverlay.classList.toggle('open');
-                setTimeout(function(){
-                getRandomCuisineByCity(cityID);
-                },2000);
+                setTimeout(function () {
+                    getRandomCuisineByCity(cityID);
+                }, 2000);
                 break;
             default:
                 console.log('Default');
