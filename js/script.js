@@ -9,6 +9,7 @@ let cuisine;
     const cityInput = document.getElementById('cityInput');
     const submitButton = document.getElementById('submitButton');
     submitButton.addEventListener('click', function (e) {
+
         e.preventDefault();
         getListOfCities(cityInput.value);
     });
@@ -81,18 +82,18 @@ function fetchZomatoAPI(url) {
 
 function getListOfCities(city) {
     const modalOverlay = document.querySelector('.modal-overlay');
-    const modalContent = document.querySelector('.modal-content')
+    const modalContent = document.querySelector('.modal-content');
+    const cityList = document.querySelector('.city-list');
     let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
     fetchZomatoAPI(url)
         .then((res) => {
+            cityList.innerHTML = '';
             console.log(res.location_suggestions);
             res.location_suggestions.forEach((item) => {
                 let li = document.createElement('li');
                 li.classList.add('modal-city-list');
-                // li.setAttribute('id',)
-                //console.log(item)
                 li.innerText = item.name;
-                modalContent.appendChild(li);
+                cityList.appendChild(li);
                 li.addEventListener('click', () => {
                     modalOverlay.classList.toggle('open');
                     currentCity.innerText = item.name;
