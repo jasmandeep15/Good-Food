@@ -1,5 +1,6 @@
 'use strict';
 
+
 let cityID;
 let cuisine;
 
@@ -66,6 +67,7 @@ let cuisine;
 
 
 
+
 function fetchZomatoAPI(url) {
     const apiKey = `5c33e02d2f956b33f9e47edc7424cf4c`;
     const fetchVar = fetch(url, {
@@ -129,17 +131,20 @@ function getEstablishmentsByCity(cityID, cuisine) {
         .then((res) => {
             restaurantContainer.innerHTML = '';
             res.restaurants.forEach((item) => {
-
                 let restaurantName = item.restaurant.name;
                 let restaurantAddress = item.restaurant.location.address;
                 let restaurantHours = item.restaurant.timings;
                 let restaurantWebsite = item.restaurant.url;
+                let cuisineName = item.restaurant.cuisines;
                 //console.log("Restaurant: ", restaurantName, restaurantAddress, restaurantHours, restaurantWebsite);
                 let lat = item.restaurant.location.latitude;
                 let long = item.restaurant.location.longitude;
                 console.log(restaurantName, lat, long);
 
                 restaurantContainer.classList.add('has-text-primary-light');
+                const cuisineHeader = document.createElement('h1');
+                cuisineHeader.classList.add('cuisine-header');
+
                 const h1 = document.createElement('h1');
                 h1.classList.add('title');
                 h1.classList.add('pt-4');
@@ -174,11 +179,13 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
                 const timings = document.createElement('p');
 
+                cuisineHeader.innerText = "Cuisine(s): " + cuisineName;
                 h1.innerText = restaurantName;
                 p.innerText = restaurantAddress;
                 timings.innerText = restaurantHours;
                 a.innerText = 'Website';
                 a.setAttribute('href', restaurantWebsite);
+                restaurantContainer.appendChild(cuisineHeader);
                 restaurantContainer.appendChild(h1);
                 restaurantContainer.appendChild(p);
                 restaurantContainer.appendChild(timings);
