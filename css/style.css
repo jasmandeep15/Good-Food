@@ -136,3 +136,9 @@ body {
     background-color: rgb(7, 108, 133);
     border: radius;
 }
+
+.cuisine-header {
+    font-size: 24px;
+    text-align: center;
+}
+
