@@ -5,14 +5,15 @@ body {
 }
 
 .card-container {
-    border-radius: 20px;
+    border-radius: 30px;
+    border:black;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
     max-width: 1000px;
-    padding-top: 235px;
+    padding-top: 245px;
     padding-bottom: 15px;
 }
 
@@ -32,7 +33,7 @@ body {
     color: #f5f5f5;
 }
 .card-image {
-    border: radius;
+    border-radius: 30px;
 }
 .lead {
     color: darkslategrey;
