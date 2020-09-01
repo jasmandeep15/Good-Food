@@ -5,6 +5,7 @@ let cityID;
 let cuisine;
 
 (function () {
+    const spinner = document.getElementById('spinner');
     const restaurantOverlay = document.querySelector('.restaurant-overlay')
     const cityInput = document.getElementById('cityInput');
     const submitButton = document.getElementById('submitButton');
@@ -24,39 +25,35 @@ let cuisine;
             switch (item.id) {
                 case 'card1':
                     restaurantOverlay.classList.toggle('open');
-                    setTimeout(function () {
-                        getEstablishmentsByCity(cityID, 168);
-                    }, 2000);
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 168);
                     break;
                 case 'card2':
                     restaurantOverlay.classList.toggle('open');
-                    setTimeout(function () {
-                        getEstablishmentsByCity(cityID, 82);
-                    }, 2000);
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 82);
                     break;
                 case 'card3':
                     restaurantOverlay.classList.toggle('open');
-                    setTimeout(function () {
-                        getEstablishmentsByCity(cityID, 83);
-                    }, 2000);
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 83);
+
                     break;
                 case 'card4':
                     restaurantOverlay.classList.toggle('open');
-                    setTimeout(function () {
-                        getEstablishmentsByCity(cityID, 193);
-                    }, 2000);
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 193);
+
                     break;
                 case 'card5':
                     restaurantOverlay.classList.toggle('open');
-                    setTimeout(function () {
-                        getEstablishmentsByCity(cityID, 55);
-                    }, 2000);
+                    restaurantContainer.append(spinner);
+                    getEstablishmentsByCity(cityID, 55);
                     break;
                 case 'card6':
                     restaurantOverlay.classList.toggle('open');
-                    setTimeout(function () {
-                        getRandomCuisineByCity(cityID);
-                    }, 2000);
+                    restaurantContainer.append(spinner);
+                    getRandomCuisineByCity(cityID);
                     break;
                 default:
                     console.log('Default');
