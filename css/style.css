@@ -1,10 +1,12 @@
 body {
-    background-image: url('/goodeatslogoagain.jpg');
+
+    background-image: url('../goodeatslogoagain.jpg');
     background-attachment: fixed;
 }
 
 .card-container {
-    border-radius: 20px;
+    border-radius: 30px;
+    border:black;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -31,7 +33,7 @@ body {
     color: #f5f5f5;
 }
 .card-image {
-    border: radius;
+    border-radius: 30px;
 }
 .lead {
     color: darkslategrey;
@@ -53,6 +55,12 @@ body {
     color: whitesmoke;
     text-align: center;
     justify-content: center;
+}
+
+.header a {
+    font-size: 12px;
+    margin: auto 0px auto 5px;
+    color: white;
 }
 
 .modal-overlay {
@@ -129,56 +137,25 @@ body {
 .restaurant-overlay.open {
     display: flex;
 }
+
+
 .container bg-img {
     background-color: rgb(7, 108, 133);
     border: radius;
 }
 
-.example-title {
-    color: white;
+.cuisine-header {
+    font-size: 24px;
+    text-align: center;
 }
-@keyframes tonext {
-    10% {
-      left: 0;
+
+.current-city {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 640px) {
+    .header {
+        font-size: 18px;
     }
-    10% {
-      left: 100%;
-    }
-    10% {
-      left: 100%;
-    }
-    10% {
-      left: 0;
-    }
-  }
-  
-  @keyframes tostart {
-    10% {
-      left: 0;
-    }
-    10% {
-      left: -300%;
-    }
-    10% {
-      left: -300%;
-    }
-    10% {
-      left: 0;
-    }
-  }
-  
-  @keyframes snap {
-    10% {
-      scroll-snap-align: center;
-    }
-    10% {
-      scroll-snap-align: none;
-    }
-    10% {
-      scroll-snap-align: none;
-    }
-    10% {
-      scroll-snap-align: center;
-    }
-  }
-  
+}
+
