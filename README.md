@@ -1,10 +1,10 @@
 ## GOOD EATS
 
-All about what food to eat now!
+What food would you prefer to eat at this moment?
 
 ## Motivation
 
-When you are having a hard time deciding for yourselve what you are in the mood for to eat.
+When you are having a hard time deciding what you would like to eat.
 
 ## Build Status
 
@@ -25,8 +25,8 @@ Bootstrap.com
 
 ## Features
 
-Costom background design, 
-Unique idea of the purpose of the application, 
+Costom background design. 
+Unique idea of the purpose of the application. 
 And choices on what to add into our project.
 
 ## Code Example
@@ -34,13 +34,13 @@ And choices on what to add into our project.
 
 ## Installation
 
--getEstablishments and Spinners by Brittany:
+-GetEstablishments and Spinners by Brittany:
 
 -JavaScript Functions by Eric:
 
--openModal and BulmaCard Designs by Aliyah:
+-OpenModal and BulmaCard Designs by Aliyah:
 
-Layout and Desing by Annemarie:
+-Layout and Desing by Annemarie:
 
 ## API References
 
@@ -50,6 +50,8 @@ MapQuest:
 https://developer.mapquest.com/documentation/
 
 ## How to use?
+
+
 
 ## Credits
 
