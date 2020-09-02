@@ -15,7 +15,7 @@ Completed.
 Standard.
 
 ## Screenshots
-
+![intro_screen](screenshot.png)
 Front end view of Project:
 
 ## Tech/framework used
