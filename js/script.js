@@ -200,40 +200,36 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
 // Pexel API - Random pictures displayed on selection cards
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
-const burgers = document.getElementById('burgerPicture');
-const pizzaPicture = document.getElementById('pizzaPicture');
-const seafoodPicture = document.getElementById('seafoodPicture');
-const bbqPicture = document.getElementById('bbqPicture');
-const pastaPicture = document.getElementById('italianPicture');
 
-function getRandomPicture(category, element) {
-    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=5`;
-    let fetchVar = fetch(url, {
-        headers: {
-            'Authorization': pexelApiKey,
-        },
-    })
-        .then((res) => {
-            return res.json();
+
+function getRandomPicture() {
+    const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
+    const foodImage = document.querySelectorAll('.food-image');
+    foodImage.forEach(item => {
+        let category = item.id;
+        let url = `https://api.pexels.com/v1/search?query=${category}&per_page=5`;
+        fetch(url, {
+            headers: {
+                'Authorization': pexelApiKey,
+            },
         })
-        .then((data) => {
-            return data;
-        })
-        .then((res) => {
-            console.log(res)
-            let sizedPhotos = res.photos.filter(item => {
-                return item.width > item.height
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                return data;
+            })
+            .then((res) => {
+                console.log(res)
+                let sizedPhotos = res.photos.filter(item => {
+                    return item.width > item.height
+                });
+                let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
+                let randomPhoto = sizedPhotos[randomIndex].src.medium;
+                item.setAttribute('src', randomPhoto)
             });
-            let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
-            let randomPhoto = sizedPhotos[randomIndex].src.medium;
-            element.setAttribute('src', randomPhoto)
-        });
-    return fetchVar;
+    })
 };
 
-getRandomPicture();
-// getRandomPicture('Burger', burgers);
-// getRandomPicture('Pizza', pizzaPicture);
-// getRandomPicture('Seafood', seafoodPicture);
-// getRandomPicture('BBQ pork', bbqPicture);
-// getRandomPicture('Pasta', pastaPicture);
+//getRandomPicture();
+
