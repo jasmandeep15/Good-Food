@@ -231,5 +231,5 @@ function getRandomPicture() {
     })
 };
 
-getRandomPicture();
+//getRandomPicture();
 
