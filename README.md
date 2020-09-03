@@ -84,5 +84,6 @@ And Trello provided the ability to have up to date comunications on our project 
 Challenge for this project was segregation of individual tasks to members. 
 Git and GitHub Merges.
 Colaborating on LiveShare VSCode worked easier for this size project.
+Random Photo Projet was limited to small amout of picture usage, thus decicion was made to set random pictures on hold.
 
 ## The End.
