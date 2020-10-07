@@ -9,6 +9,7 @@ let cuisine;
     const cityInput = document.getElementById('cityInput');
     const submitButton = document.getElementById('submitButton');
     submitButton.addEventListener('click', function (e) {
+
         e.preventDefault();
         getListOfCities(cityInput.value);
     });
@@ -81,18 +82,18 @@ function fetchZomatoAPI(url) {
 
 function getListOfCities(city) {
     const modalOverlay = document.querySelector('.modal-overlay');
-    const modalContent = document.querySelector('.modal-content')
+    const modalContent = document.querySelector('.modal-content');
+    const cityList = document.querySelector('.city-list');
     let url = `https://developers.zomato.com/api/v2.1/cities?q=${city}`;
     fetchZomatoAPI(url)
         .then((res) => {
+            cityList.innerHTML = '';
             console.log(res.location_suggestions);
             res.location_suggestions.forEach((item) => {
                 let li = document.createElement('li');
                 li.classList.add('modal-city-list');
-                // li.setAttribute('id',)
-                //console.log(item)
                 li.innerText = item.name;
-                modalContent.appendChild(li);
+                cityList.appendChild(li);
                 li.addEventListener('click', () => {
                     modalOverlay.classList.toggle('open');
                     currentCity.innerText = item.name;
@@ -199,48 +200,36 @@ function getEstablishmentsByCity(cityID, cuisine) {
 
 // Pexel API - Random pictures displayed on selection cards
 const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
-const burgers = document.getElementById('burgerPicture');
-const pizzaPicture = document.getElementById('pizzaPicture');
-const seafoodPicture = document.getElementById('seafoodPicture');
-const bbqPicture = document.getElementById('bbqPicture');
-const pastaPicture = document.getElementById('italianPicture');
 
-function getRandomPicture(category, element) {
-    let url = `https://api.pexels.com/v1/search?query=${category}&per_page=5`;
-    let fetchVar = fetch(url, {
-        headers: {
-            'Authorization': pexelApiKey,
-        },
-    })
-        .then((res) => {
-            return res.json();
+
+function getRandomPicture() {
+    const pexelApiKey = '563492ad6f917000010000015b1b377af3ac48368c8dbfb885947855';
+    const foodImage = document.querySelectorAll('.food-image');
+    foodImage.forEach(item => {
+        let category = item.id;
+        let url = `https://api.pexels.com/v1/search?query=${category}&per_page=5`;
+        fetch(url, {
+            headers: {
+                'Authorization': pexelApiKey,
+            },
         })
-        .then((data) => {
-            return data;
-        })
-        .then((res) => {
-            console.log(res)
-            let sizedPhotos = res.photos.filter(item => {
-                return item.width > item.height
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                return data;
+            })
+            .then((res) => {
+                console.log(res)
+                let sizedPhotos = res.photos.filter(item => {
+                    return item.width > item.height
+                });
+                let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
+                let randomPhoto = sizedPhotos[randomIndex].src.medium;
+                item.setAttribute('src', randomPhoto)
             });
-            let randomIndex = Math.floor(Math.random() * sizedPhotos.length);
-            let randomPhoto = sizedPhotos[randomIndex].src.medium;
-            element.setAttribute('src', randomPhoto)
-        });
-    return fetchVar;
+    })
 };
 
+//getRandomPicture();
 
-// getRandomPicture('Burger', burgers);
-// getRandomPicture('Pizza', pizzaPicture);
-// getRandomPicture('Seafood', seafoodPicture);
-// getRandomPicture('BBQ pork', bbqPicture);
-// getRandomPicture('Pasta', pastaPicture);
-
-// var rangeslider = document.getElementById("sliderRange");
-// var output = document.getElementById("demo");
-// output.innerHTML = rangeslider.value;
-
-// rangeslider.oninput = function() {
-//   output.innerHTML = this.value;
-// }
